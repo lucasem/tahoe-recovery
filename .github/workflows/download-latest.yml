@@ -1,4 +1,4 @@
-name: Tahoe Beta (latest) Recovery Image
+name: Tahoe Stable (latest) Recovery Image
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ jobs:
         run: |
           git clone https://github.com/corpnewt/gibMacOS.git
 
-      - name: Download macOS Installer (latest beta)
+      - name: Download macOS Installer (latest stable)
         run: |
-          python ./gibMacOS/gibMacOS.py -c developer -v Tahoe -m 26 -o /tmp/Tahoe-beta-latest
+          python ./gibMacOS/gibMacOS.py -c public -v Tahoe -m 26 -o /tmp/Tahoe-stable-latest
 
       - name: Install the assistant
         run: |
-          sudo installer -pkg /tmp/Tahoe-beta-latest/InstallAssistant.pkg -target /
+          sudo installer -pkg /tmp/Tahoe-stable-latest/InstallAssistant.pkg -target /
 
       - name: Generate macOS Installer
         run: |
